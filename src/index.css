@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hover-underline {
+  font-size: 2.2rem;
+  color: #000000;
+  position: relative;
+  width: 300px;
+  /* display: inline-block; This is essential */
+
+}
+
+.hover-underline::after,
+.hover-underline::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #ff0000, #00ffff);
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.4s ease-out;
+}
+
+.hover-underline::after {
+  bottom: -5px;
+  transform-origin: right;
+}
+
+.hover-underline::before {
+  top: -5px;
+  transform-origin: left;
+}
+
+.hover-underline:hover::after,
+.hover-underline:hover::before {
+  transform: scaleX(1);
+}
+
+.section-1 {
+  height: vh;
+  padding: rem;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.article-1 {
+  background: transparent;
+  height:100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.pp, span {
+  font-family:Bungee;
+}
+
+.pp {
+  transition: all ease-out .5s;
+  color: transparent;
+  text-shadow: 0 0 0px #34D399  ;
+  font-size: 1.6rem;
+  padding: 0 0rem;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.pp:before {
+  content: "";
+  width: 50%;
+  position: absolute;
+  border-bottom: solid 4px #fff;
+  left: -50%;
+  top: 50px;
+  transition: transform 0.5s cubic-bezier(1, -0.04, 0, 1.16);
+}
+
+.pp span {
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.pp span:first-child:before, p span:last-child:before {
+  content: attr(data-text);
+  color: #fff;
+  display: block;
+  transition: ease-out all 0.4s -0.1s;
+}
+
+.pp span:first-child {
+  top: 0;
+}
+
+.pp span:last-child {
+  bottom: 0;
+}
+
+.pp span:first-child:before {
+  transform: translateY(41px);
+}
+
+.pp span:last-child:before {
+  transform: translateY(-95px)
+}
+
+.pp:hover {
+  transition: all ease-out 0s;
+  text-shadow: none;
+}
+
+.pp:hover:before {
+  transform: translateX(42rem);
+}
+
+.pp:hover span:first-child:before,
+.pp:hover span:last-child:before {
+  transition: ease-out all 0.3s;
+  transition-delay: .3s;
+}
+
+.pp:hover span:first-child:before {
+  transform: translateY(0);
+}
+
+.pp:hover span:last-child:before {
+  transform: translateY(-58px);
+}
