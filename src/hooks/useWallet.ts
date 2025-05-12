@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 
 const BSC_CHAIN_ID = '0x38';
 const USDT_ADDRESS = '0x55d398326f99059fF775485246999027B3197955';
-const DU30_ADDRESS = 'x328c1fD9ca899e5547e0ca2d8c1AF972C5f91834';
+const DU30_ADDRESS = '0x178f3521240342c5A4df7482A28CFAb8397a9fD2';
 
 export const useWallet = () => {
   const [account, setAccount] = useState<string | null>(null);

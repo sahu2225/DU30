@@ -3,7 +3,7 @@ import { ethers } from 'ethers';
 import { ERC20_ABI, SWAP_ABI } from '../contracts/abis';
 import toast from 'react-hot-toast';
 
-const SWAP_ADDRESS = 'x328c1fD9ca899e5547e0ca2d8c1AF972C5f91834';
+const SWAP_ADDRESS = '0x178f3521240342c5A4df7482A28CFAb8397a9fD2';
 const USDT_ADDRESS = '0x55d398326f99059fF775485246999027B3197955';
 
 export const useSwap = (account: string | null, onSuccess: () => void) => {

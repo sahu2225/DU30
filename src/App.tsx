@@ -19,23 +19,23 @@ function App() {
       label: "Liquidity Pool 1 (USDT)",
       value: "Loading...",
       type: "Wallet BSSCAN Link",
-      link: "https://bscscan.com/token/0x55d398326f99059fF775485246999027B3197955?a=0x328c1fD9ca899e5547e0ca2d8c1AF972C5f91834",
+      link: "https://bscscan.com/token/0x55d398326f99059fF775485246999027B3197955?a=0x178f3521240342c5A4df7482A28CFAb8397a9fD2",
     },
     { label: "Tokens Minted (DU30)", value: "Loading..." },
-    { label: "No of wallet holder", value: "Loading..." },
-    { label: "No of tot trans", value: "Loading..." },
+    { label: "Total number of wallet holders", value: "Loading..." },
+    { label: "Total number of transactions", value: "Loading..." },
     {
       label: "DU30 Token Contract Address",
       type: "Contract BSSCAN Link",
-      link: "https://bscscan.com/token/0x328c1fD9ca899e5547e0ca2d8c1AF972C5f91834",
+      link: "https://bscscan.com/token/0x178f3521240342c5A4df7482A28CFAb8397a9fD2",
     },
     {
       label: "Smart Contract Address",
       type: "Smart Contract BSSCAN Link",
-      link: "https://bscscan.com/address/0x328c1fD9ca899e5547e0ca2d8c1AF972C5f91834#code",
+      link: "https://bscscan.com/address/0x178f3521240342c5A4df7482A28CFAb8397a9fD2#code",
     },
     {
-      label: "Time Until Next Withdraw",
+      label: "LP Timelock Release ( Locked )",
       value: "Loading...",
       type: "Time Lock"
     }
@@ -48,99 +48,6 @@ function App() {
     ).toLocaleString(undefined, { maximumFractionDigits: 4 });
   };
   
-  // useEffect(() => {
-  //   const fetchDataInOrder = async () => {
-  //     try {
-  //       // Define constants
-  //       const bscscanApiKey = "767BR2ATFM4WJPW87Q15EZ3JWRG99YFYZ6";
-  //       const usdtContractAddress = "0x55d398326f99059fF775485246999027B3197955";
-  //       const contractAddress = "0x328c1fD9ca899e5547e0ca2d8c1AF972C5f91834";
-  //       const walletAddress = "0x328c1fD9ca899e5547e0ca2d8c1AF972C5f91834";
-
-  //       // Initialize ethers provider
-  //       const BSC_RPC_URL = "https://bsc-dataseed.binance.org/";
-  //       const provider = new ethers.providers.JsonRpcProvider(BSC_RPC_URL);
-        
-  //       // Contract ABI for the required functions
-  //       const CONTRACT_ABI = [
-  //         "function swapCount() view returns (uint256)",
-  //         "function uniqueSwapperCount() view returns (uint256)",
-  //         "function timeUntilNextWithdraw() view returns (uint256)"
-  //       ];
-        
-  //       const contract = new ethers.Contract(contractAddress, CONTRACT_ABI, provider);
-
-  //       // Fetch contract data
-  //       const [swapCount, uniqueSwappers, timeUntilWithdraw] = await Promise.all([
-  //         contract.swapCount(),
-  //         contract.uniqueSwapperCount(),
-  //         contract.timeUntilNextWithdraw()
-  //       ]);
-
-  //       // Format time until next withdraw
-  //       const seconds = timeUntilWithdraw.toNumber();
-  //       const days = Math.floor(seconds / (3600 * 24));
-  //       const hours = Math.floor((seconds % (3600 * 24)) / 3600);
-  //       const minutes = Math.floor((seconds % 3600) / 60);
-  //       const timeString = `${days > 0 ? `${days} days ` : ''}${hours > 0 ? `${hours} hours ` : ''}${minutes} minutes`;
-
-  //       // Update token metrics with contract data
-  //       setTokenMetrics(prev => prev.map(item => {
-  //         if (item.label === "No of wallet holder") {
-  //           return {...item, value: uniqueSwappers.toString()};
-  //         }
-  //         if (item.label === "No of tot trans") {
-  //           return {...item, value: swapCount.toString()};
-  //         }
-  //         if (item.label === "Time Until Next Withdraw") {
-  //           return {...item, value: timeString};
-  //         }
-  //         return item;
-  //       }));
-
-  //       // Fetch Pool 1 data (USDT)
-  //       const balanceResponse = await fetch(
-  //         `https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress=${usdtContractAddress}&address=${walletAddress}&tag=latest&apikey=${bscscanApiKey}`
-  //       );
-  //       const balanceData = await balanceResponse.json();
-        
-  //       if (balanceData.status === "1") {
-  //         setTokenMetrics(prev => prev.map(item => 
-  //           item.label === "Liquidity Pool 1 (USDT)" 
-  //             ? {...item, value: formatUnits(balanceData.result) + " USDT"} 
-  //             : item
-  //         ));
-  //       }
-
-  //       // Fetch Tokens Minted data (DU30) from BscScan
-  //       const supplyResponse = await fetch(
-  //         `https://api.bscscan.com/api?module=stats&action=tokensupply&contractaddress=${contractAddress}&apikey=${bscscanApiKey}`
-  //       );
-  //       const supplyData = await supplyResponse.json();
-        
-  //       if (supplyData.status === "1") {
-  //         setTokenMetrics(prev => prev.map(item => 
-  //           item.label === "Tokens Minted (DU30)" 
-  //             ? {...item, value: formatUnits(supplyData.result) + " DU30"} 
-  //             : item
-  //         ));
-  //       }
-
-  //     } catch (err) {
-  //       console.error("Error fetching data:", err);
-  //       setTokenMetrics(prev => {
-  //         return prev.map(item => {
-  //           if (item.value === "Loading...") {
-  //             return {...item, value: "Error fetching data"};
-  //           }
-  //           return item;
-  //         });
-  //       });
-  //     }
-  //   };
-  
-  //   fetchDataInOrder();
-  // }, []);
 
    // Replace your existing useEffect with this improved version
 useEffect(() => {
@@ -152,8 +59,8 @@ useEffect(() => {
       // Define constants
       const bscscanApiKey = "767BR2ATFM4WJPW87Q15EZ3JWRG99YFYZ6";
       const usdtContractAddress = "0x55d398326f99059fF775485246999027B3197955";
-      const contractAddress = "0x328c1fD9ca899e5547e0ca2d8c1AF972C5f91834";
-      const walletAddress = "0x328c1fD9ca899e5547e0ca2d8c1AF972C5f91834";
+      const contractAddress = "0x178f3521240342c5A4df7482A28CFAb8397a9fD2";
+      const walletAddress = "0x178f3521240342c5A4df7482A28CFAb8397a9fD2";
 
       // Initialize ethers provider - force a new connection each time
       const BSC_RPC_URL = "https://bsc-dataseed.binance.org/";
@@ -163,7 +70,8 @@ useEffect(() => {
       const CONTRACT_ABI = [
         "function swapCount() view returns (uint256)",
         "function uniqueSwapperCount() view returns (uint256)",
-        "function timeUntilNextWithdraw() view returns (uint256)"
+        "function timeUntilNextWithdraw() view returns (uint256)",
+        "function isClaimAvailable() view returns (bool)"
       ];
       
       const contract = new ethers.Contract(contractAddress, CONTRACT_ABI, provider);
@@ -177,16 +85,18 @@ useEffect(() => {
         console.log("Unique swappers:", uniqueSwappers.toString());
         
         // For testing purposes, you can uncomment this line and comment the next
-        const timeUntilWithdraw = ethers.BigNumber.from(84000);
-        // const timeUntilWithdraw = await contract.timeUntilNextWithdraw();
+      // const timeUntilWithdraw = ethers.BigNumber.from(84000);
+         const timeUntilWithdraw = await contract.timeUntilNextWithdraw();
         console.log("Time until withdraw:", timeUntilWithdraw.toString());
 
+const locknUnclock = await contract.isClaimAvailable();
+const statusLabel = locknUnclock ? "Unlocked" : "Locked";
+
         // Format time until next withdraw
-        const seconds = timeUntilWithdraw.toNumber();
-        const days = Math.floor(seconds / (3600 * 24));
-        const hours = Math.floor((seconds % (3600 * 24)) / 3600);
-        const minutes = Math.floor((seconds % 3600) / 60);
-        const timeString = `${days > 0 ? `${days} days ` : ''}${hours > 0 ? `${hours} hours ` : ''}${minutes} minutes`;
+const seconds = timeUntilWithdraw.toNumber();
+const hours = Math.floor(seconds / 3600);
+const minutes = Math.floor((seconds % 3600) / 60);
+const timeString = `${hours} hours ${minutes} minutes`;
 
         // Use the functional update form of setState to ensure we're working with the latest state
         setTokenMetrics(prev => {
@@ -194,7 +104,7 @@ useEffect(() => {
           const newMetrics = [...prev];
           
           // Find and update specific entries
-          const walletHolderIndex = newMetrics.findIndex(item => item.label === "No of wallet holder");
+          const walletHolderIndex = newMetrics.findIndex(item => item.label === "Total number of wallet holders");
           if (walletHolderIndex >= 0) {
             newMetrics[walletHolderIndex] = {
               ...newMetrics[walletHolderIndex],
@@ -202,7 +112,7 @@ useEffect(() => {
             };
           }
           
-          const transIndex = newMetrics.findIndex(item => item.label === "No of tot trans");
+          const transIndex = newMetrics.findIndex(item => item.label === "Total number of transactions");
           if (transIndex >= 0) {
             newMetrics[transIndex] = {
               ...newMetrics[transIndex],
@@ -210,7 +120,10 @@ useEffect(() => {
             };
           }
           
-          const timeIndex = newMetrics.findIndex(item => item.label === "Time Until Next Withdraw");
+
+
+const timeIndex = newMetrics.findIndex(
+  item => item.label === `LP Timelock Release ( ${statusLabel} )`);
           if (timeIndex >= 0) {
             newMetrics[timeIndex] = {
               ...newMetrics[timeIndex],
@@ -294,7 +207,7 @@ useEffect(() => {
     const amount = isUsdtToDu30 ? usdtAmount : du30Amount;
     const tokenAddress = isUsdtToDu30
       ? '0x55d398326f99059fF775485246999027B3197955'
-      : '0x328c1fD9ca899e5547e0ca2d8c1AF972C5f91834';
+      : '0x178f3521240342c5A4df7482A28CFAb8397a9fD2';
 
     await approve(tokenAddress, amount);
     await swap(tokenAddress, amount);
@@ -467,9 +380,9 @@ useEffect(() => {
                     {/* Display for read-only metrics */}
                     {item.label === "Liquidity Pool 1 (USDT)" ||
                     item.label === "Tokens Minted (DU30)" ||
-                    item.label === "No of wallet holder" ||
-                    item.label === "No of tot trans" ||
-                    item.label === "Time Until Next Withdraw" ? (
+                    item.label === "Total number of wallet holders" ||
+                    item.label === "Total number of transactions" ||
+                    item.label === "LP Timelock Release ( Locked )" ? (
                       <p className="text-gray-800 font-medium">
                         {item.value}
                       </p>
